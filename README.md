@@ -1,60 +1,222 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Here is the full **README.md rewritten in clean GitHub Markdown** — properly formatted, clean spacing, headings, and code blocks.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+# 📦 Review & Rating System API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A **Laravel-based REST API** for managing **categories, gigs, reviews, and ratings**, complete with **authentication**, **filtering**, and **database seeding**.
+Perfect for marketplaces, gig platforms, and service-based applications.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Features
 
-## Learning Laravel
+* 🗂 **Category Management** (CRUD)
+* 🎭 **Gig Management** (CRUD + filtering)
+* ⭐ **Review & Rating System**
+* 🔐 **User Authentication** (Laravel Sanctum)
+* 🎛 **API Resources & Validation**
+* 🌱 **Database Seeder** (sample data)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Requirements
 
-## Laravel Sponsors
+* PHP **8.1+**
+* Laravel **10+**
+* Composer
+* MySQL / PostgreSQL / SQLite
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠 Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### **1. Clone the repository**
 
-## Contributing
+```bash
+git clone <repository-url>
+cd review-rating-api
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **2. Install dependencies**
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **3. Configure environment**
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Edit `.env`:
 
-## License
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=review_rating_api
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Review-Rating-System-API
+### **4. Migrate & seed database**
+
+```bash
+php artisan migrate --seed
+```
+
+### **5. Publish Sanctum configuration**
+
+```bash
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
+
+---
+
+## 🔑 Authentication
+
+This API uses **Laravel Sanctum**.
+
+Include your token in protected requests:
+
+```
+Authorization: Bearer YOUR_TOKEN_HERE
+```
+
+---
+
+## 📡 API Endpoints
+
+### **Public Endpoints**
+
+| Method | Endpoint               | Description                        |
+| ------ | ---------------------- | ---------------------------------- |
+| GET    | `/api/categories`      | List all categories                |
+| GET    | `/api/categories/{id}` | Get category details               |
+| GET    | `/api/gigs`            | List all gigs (supports filtering) |
+| GET    | `/api/gigs/{id}`       | Get gig details                    |
+
+---
+
+### **Protected Endpoints**
+
+📌 *Require Bearer Token*
+
+#### **Gigs**
+
+| Method | Endpoint         | Description  |
+| ------ | ---------------- | ------------ |
+| POST   | `/api/gigs`      | Create a gig |
+| PUT    | `/api/gigs/{id}` | Update a gig |
+| DELETE | `/api/gigs/{id}` | Delete a gig |
+
+#### **Reviews**
+
+| Method | Endpoint                  | Description           |
+| ------ | ------------------------- | --------------------- |
+| GET    | `/api/gigs/{gig}/reviews` | Get reviews for a gig |
+| POST   | `/api/gigs/{gig}/reviews` | Create a review       |
+| PUT    | `/api/reviews/{id}`       | Update a review       |
+| DELETE | `/api/reviews/{id}`       | Delete a review       |
+
+---
+
+## 🎛 Gig Query Parameters
+
+| Parameter     | Description                             |
+| ------------- | --------------------------------------- |
+| `category_id` | Filter by category                      |
+| `seller_id`   | Filter by seller                        |
+| `search`      | Search by title                         |
+| `active_only` | Show only active gigs (default: `true`) |
+
+---
+
+## 🗄 Database Schema
+
+### **categories**
+
+* id
+* name
+* slug
+* description
+* timestamps
+
+### **gigs**
+
+* id
+* title
+* slug
+* description
+* price
+* category_id
+* seller_id
+* is_active
+* timestamps
+
+### **reviews**
+
+* id
+* comment
+* rating
+* gig_id
+* user_id
+* timestamps
+
+---
+
+## 🌱 Database Seeding
+
+The seeder generates:
+
+* 5 categories
+* 10 sellers
+* 20 buyers
+* 50 gigs
+* Random reviews
+
+Run again anytime:
+
+```bash
+php artisan migrate --seed
+```
+
+---
+
+## 🧪 Postman Collection
+
+Create **postman-collection.json** in the project root:
+
+```json
+{
+  "info": {
+    "name": "Review Rating API",
+    "description": "API for managing gigs and reviews",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    }
+  ],
+  "item": []
+}
+```
+
+> You can expand it with more endpoints as needed.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+
