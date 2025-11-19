@@ -213,6 +213,4 @@ Create **postman-collection.json** in the project root:
 
 This project is licensed under the **MIT License**.
 
----
-
 
