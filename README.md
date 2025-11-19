@@ -7,12 +7,12 @@ Perfect for marketplaces, gig platforms, and service-based applications.
 
 ## 🚀 Features
 
-* 🗂 **Category Management** (CRUD)
-* 🎭 **Gig Management** (CRUD + filtering)
-* ⭐ **Review & Rating System**
-* 🔐 **User Authentication** (Laravel Sanctum)
-* 🎛 **API Resources & Validation**
-* 🌱 **Database Seeder** (sample data)
+*  **Category Management** (CRUD)
+*  **Gig Management** (CRUD + filtering)
+*  **Review & Rating System**
+*  **User Authentication** (Laravel Sanctum)
+*  **API Resources & Validation**
+*  **Database Seeder** (sample data)
 
 ---
 
