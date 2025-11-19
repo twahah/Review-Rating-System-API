@@ -180,33 +180,6 @@ Run again anytime:
 ```bash
 php artisan migrate --seed
 ```
-
----
-
-## 🧪 Postman Collection
-
-Create **postman-collection.json** in the project root:
-
-```json
-{
-  "info": {
-    "name": "Review Rating API",
-    "description": "API for managing gigs and reviews",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:8000/api",
-      "type": "string"
-    }
-  ],
-  "item": []
-}
-```
-
-> You can expand it with more endpoints as needed.
-
 ---
 
 ## 📄 License
