@@ -1,8 +1,4 @@
-Here is the full **README.md rewritten in clean GitHub Markdown** — properly formatted, clean spacing, headings, and code blocks.
-
----
-
-# 📦 Review & Rating System API
+#  Review & Rating System API
 
 A **Laravel-based REST API** for managing **categories, gigs, reviews, and ratings**, complete with **authentication**, **filtering**, and **database seeding**.
 Perfect for marketplaces, gig platforms, and service-based applications.
